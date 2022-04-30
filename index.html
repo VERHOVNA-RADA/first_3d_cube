@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        div {
+            transform-style: preserve-3d;
+            background: radial-gradient(rgba(26, 255, 0, 0.7), rgba(10, 73, 2, 0.7));
+        }
+
+        .cube {
+            height: 200px;
+            width: 200px;
+            box-shadow: inset 0px 0px 10px black;
+        }
+
+        .cube::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 200px;
+            width: 200px;
+            transform-origin: bottom;
+            transform: rotateX(90deg) translateY(200px);
+            background: radial-gradient(rgba(26, 255, 0, 0.7), rgba(10, 73, 2, 0.7));
+            box-shadow: inset 0px 0px 10px black;
+        }
+
+        .cube::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 200px;
+            width: 200px;
+            transform-origin: top;
+            transform: rotateX(90deg);
+            background: radial-gradient(rgba(26, 255, 0, 0.7), rgba(10, 73, 2, 0.7));
+            box-shadow: inset 0px 0px 10px black;
+        }
+
+        .wrapper {
+            animation: animation 5s linear infinite;
+        }
+
+        .wall1 {
+            position: absolute;
+            bottom: 0;
+            height: 200px;
+            width: 200px;
+            transform-origin: right;
+            transform: rotateY(90deg);
+            box-shadow: inset 0px 0px 10px black;
+        }
+
+        .wall2 {
+            position: absolute;
+            bottom: 0;
+            height: 200px;
+            width: 200px;
+            transform-origin: left;
+            transform: rotateY(-90deg);
+            box-shadow: inset 0px 0px 10px black;
+        }
+
+        .wall3 {
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            box-shadow: inset 0px 0px 10px black;
+            transform: translateZ(200px) translateY(-200px);
+        }
+
+        @keyframes animation {
+            0% {
+                transform: rotate3d(1, 1, 1, 0deg);
+            }
+
+            100% {
+                transform: rotate3d(1, 1, 1, 360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="cube"></div>
+        <div class="wall1"></div>
+        <div class="wall2"></div>
+        <div class="wall3"></div>
+    </div>
+</body>
+</html>
